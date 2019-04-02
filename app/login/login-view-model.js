@@ -3,6 +3,8 @@ const dialogsModule = require("ui/dialogs");
 const userService = require("~/shared/services/user-service");
 const topmost = require("ui/frame").topmost;
 
+
+
 function LoginViewModel() {
     const viewModel = observableModule.fromObject({
         processing: false,
@@ -17,7 +19,7 @@ function LoginViewModel() {
             this.processing = true;
             if (this.email.trim() === "" || this.password.trim() === "") {
                 alert("Please provide both an email address and password.");
-                return;
+                
             }
 
             if (this.isLoggingIn) {
@@ -33,6 +35,7 @@ function LoginViewModel() {
                 password: this.password
             }).then(() => {
                 this.processing = false;
+                
                 topmost().navigate("./home/home-page");
                 /*
                     If you don't want the user to come back to login page
